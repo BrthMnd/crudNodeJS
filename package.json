@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.3.0-alpha1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  },
+  "name": "probando-guardar-datos",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon /app.js"
+  },
+  "author": "brandon",
+  "license": "ISC",
+  "description": ""
+}
