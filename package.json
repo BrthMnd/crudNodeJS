@@ -2,8 +2,11 @@
   "dependencies": {
     "bootstrap": "^5.3.0-alpha1",
     "ejs": "^3.1.8",
+    "ejs-cli": "^2.2.3",
     "express": "^4.18.2",
     "gh-pages": "^5.0.0",
+    "netlify": "^13.1.2",
+    "netlify-cli": "^12.12.1",
     "nodemon": "^2.0.20"
   },
   "name": "probando-guardar-datos",
@@ -12,7 +15,8 @@
   "scripts": {
     "start": "node app",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "nodemon /app.js"
+    "serve": "nodemon /app.js",
+    "build": "ejs-cli ./views --out ./public --client --layout ./views/layout.ejs --watch"
   },
   "author": "brandon",
   "license": "ISC",
