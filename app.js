@@ -3,8 +3,9 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
-// const { TextEncoder } = require('text-encoding');
-// const utf8Encoder = new TextEncoder();
+const { TextEncoder } = require('text-encoding');
+const utf8Encoder = new TextEncoder();
+
 //////////////////////////////// Mongoose //////////////////////////////////
 const user = 'Brandon';
 const password = '1allahuakbar123';
@@ -28,7 +29,7 @@ app.use(express.static(__dirname + '/public'));
 
 // rutas Web Application //////////////////////////////////////////////////////////////////
 app.use('/', require('./router/RutasWeb'))
-app.use('/aprendices', require('./router/Aprendices'))
+app.use('/aprendices', require('./router/Aprendices'))  
 // app.use('/mascotas', require('./router/Mascotas'))
 // 
 app.use((req, res, next) => {
