@@ -3,7 +3,8 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
-
+const { TextEncoder } = require('text-encoding');
+const utf8Encoder = new TextEncoder();
 //////////////////////////////// Mongoose //////////////////////////////////
 const user = 'Brandon';
 const password = '1allahuakbar123';
