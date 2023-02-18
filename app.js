@@ -2,29 +2,34 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
+const mongoose = require('mongoose');
 
+//////////////////////////////// Mongoose //////////////////////////////////
+const user = 'Brandon';
+const password = '1allahuakbar123';
+const db = 'Curso'
+const uri = `mongodb+srv://${user}:${password}@cluster0.nsvkq9w.mongodb.net/${db}?retryWrites=true&w=majority`
+
+
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    // strictQuery: false
+    // useCreateIndex: true,
+}).then(()=> console.log('Base de datos conectada')).catch(err => console.error(err));
 
 //////////////////////////////// EJS //////////////////////////////////
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
-app.get('/', (req, res, next) => {
-    res.render('index', {titulo : "Lo logramos"})
-})
-app.get('/servicios', (req, res, next) => {
-    res.render('servicios', {tituloServicios : "Lo logramos en servicios"})
-})
-
-//////////////////////////////// Utilidades //////////////////////////////////
-// app.get('/', (req, res, next) => {
-//     res.send('');
-// })
-
-
-
 //////////////////////////////// Midleworld //////////////////////////////////////////////////////////////////
 app.use(express.static(__dirname + '/public'));
 
+// rutas Web Application //////////////////////////////////////////////////////////////////
+app.use('/', require('./router/RutasWeb'))
+app.use('/aprendices', require('./router/Aprendices'))
+app.use('/mascotas', require('./router/Mascotas'))
+// 
 app.use((req, res, next) => {
     
     res.status(404).render('404' ,{

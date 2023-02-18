@@ -5,6 +5,7 @@
     "ejs-cli": "^2.2.3",
     "express": "^4.18.2",
     "gh-pages": "^5.0.0",
+    "mongoose": "^6.9.2",
     "netlify": "^13.1.2",
     "netlify-cli": "^12.12.1",
     "nodemon": "^2.0.20"

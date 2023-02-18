@@ -1,0 +1,50 @@
+<%- include("templates/header" , {tituloWeb: "Mascotas" }) %>
+
+    <section>
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">documento</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Nota JS</th>
+                        <th scope="col">Nota PHP</th>
+                        <th scope="col">Nota Ingles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let i=1 %>
+                        <% if (aprendices.length> 0) { %>
+                            <% aprendices.forEach(aprendiz=> { %>
+                                <tr>
+                                    <th scope="row">
+                                        <%= i %>
+                                    </th>
+                                    <td scope="col">
+                                        <%= aprendiz.documento %>
+                                    </td>
+                                    <td scope="col">
+                                        <%= aprendiz.nombre%>
+                                    </td>
+                                    <td scope="col">
+                                        <%= aprendiz.notaJs %>
+                                    </td>
+                                    <td scope="col">
+                                        <%= aprendiz.notaPhp %>
+                                    </td>
+                                    <td scope="col">
+                                        <%= aprendiz.notaIngles %>
+                                    </td>
+                                </tr>
+                                <% i+=1 %>
+                                    <% }) %>
+                                        <% } %>
+                </tbody>
+            </table>
+
+        </div>
+
+    </section>
+
+    <%- include("templates/footer") %>
