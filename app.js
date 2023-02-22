@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const app = express();
 const mongoose = require('mongoose');
 const port = process.env.PORT || 3000;
-
+const TextEncoder = require('text-encoding').TextEncoder;
 //////////////////////////////// body parse Configuration //////////////////////////////////
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
