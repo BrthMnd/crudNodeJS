@@ -1,0 +1,44 @@
+<%- include("templates/header" , {tituloWeb: "CREAR APRENDIZ" ,urlStyle: "/Style/css__crear.css" }) %>
+
+    <section>
+        <div class="container">
+            <div class="btn__send">
+                <h1>Crear</h1>
+
+            </div>
+            <form action="/aprendices" method="post">
+                <div class="form-floating mb-3">
+                    <input name="documento" type="text" class="form-control" id="floatingInput"
+                        placeholder="name@example.com">
+                    <label for="floatingInput">Documento:</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input name="nombre" type="text" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingInput">Nombre:</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input name="notaJs" type="text" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">notaJs:</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input name="notaPhp" type="text" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">notaPhp:</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input name="notaIngles" type="text" class="form-control" id="floatingPassword"
+                        placeholder="Password">
+                    <label for="floatingPassword">notaIngles:</label>
+                </div>
+                <div class="btn__send">
+
+                    <button type="submit" class="btn btn-success">Agregar</button>
+                </div>
+            </form>
+
+        </div>
+
+
+
+    </section>
+
+    <%- include("templates/footer") %>

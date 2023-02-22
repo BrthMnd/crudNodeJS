@@ -1,16 +1,18 @@
 ///////////////////////////////////// Export //////////////////////////////////////////////////////////////////
+require('dotenv').config()
 const express = require('express');
+const bodyParser = require('body-parser')
 const app = express();
-const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
-const { TextEncoder } = require('text-encoding');
-const utf8Encoder = new TextEncoder();
+const port = process.env.PORT || 3000;
+
+//////////////////////////////// body parse Configuration //////////////////////////////////
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 //////////////////////////////// Mongoose //////////////////////////////////
-const user = 'Brandon';
-const password = '1allahuakbar123';
-const db = 'Curso'
-const uri = `mongodb+srv://${user}:${password}@cluster0.nsvkq9w.mongodb.net/${db}?retryWrites=true&w=majority`
+
+const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.nsvkq9w.mongodb.net/${process.env.DB}?retryWrites=true&w=majority`
 
 
 mongoose.connect(uri, {
@@ -28,8 +30,10 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 
 // rutas Web Application //////////////////////////////////////////////////////////////////
+
 app.use('/', require('./router/RutasWeb'))
 app.use('/aprendices', require('./router/Aprendices'))  
+// app.use('/mascotas', require('./router/Mascotas'))
 // app.use('/mascotas', require('./router/Mascotas'))
 // 
 app.use((req, res, next) => {
@@ -46,7 +50,8 @@ app.use((req, res, next) => {
 
 
 
-
+try{
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-})
+    
+    console.log(`escuchando en puerto http://localhost:${port}`)
+})} catch( err ){ console.log(err) }

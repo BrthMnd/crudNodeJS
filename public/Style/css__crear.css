@@ -1,0 +1,11 @@
+.btn__send{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+}
+.btn__send h1{
+    font-size: 50px;
+    margin: 90px;
+}

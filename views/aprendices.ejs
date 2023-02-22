@@ -1,47 +1,58 @@
-<%- include("templates/header" , {tituloWeb: "Aprendices" }) %>
+<%- include("templates/header" , {tituloWeb: "Aprendices" , urlStyle: "/Style/css__aprendices.css" }) %>
 
     <section>
-        <div class="container">
-            <table class="table table-success table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">documento</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Nota JS</th>
-                        <th scope="col">Nota PHP</th>
-                        <th scope="col">Nota Ingles</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% let i=1 %>
-                        <% if (aprendices.length> 0) { %>
-                            <% aprendices.forEach(aprendiz=> { %>
-                                <tr>
-                                    <th scope="row">
-                                        <%= i %>
-                                    </th>
-                                    <td scope="col">
-                                        <%= aprendiz.documento %>
-                                    </td>
-                                    <td scope="col">
-                                        <%= aprendiz.nombre%>
-                                    </td>
-                                    <td scope="col">
-                                        <%= aprendiz.notaJs %>
-                                    </td>
-                                    <td scope="col">
-                                        <%= aprendiz.notaPhp %>
-                                    </td>
-                                    <td scope="col">
-                                        <%= aprendiz.notaIngles %>
-                                    </td>
-                                </tr>
-                                <% i+=1 %>
-                                    <% }) %>
-                                        <% } %>
-                </tbody>
-            </table>
+        <div class="container" id="container">
+            <a href="/aprendices/crear" class="btn btn-primary">
+                Crear
+            </a>
+            <div id="table__style">
+
+                <table class="table table-success table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">documento</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Nota JS</th>
+                            <th scope="col">Nota PHP</th>
+                            <th scope="col">Nota Ingles</th>
+                            <th>Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% let i=1 %>
+                            <% if (aprendices.length> 0) { %>
+                                <% aprendices.forEach(aprendiz=> { %>
+                                    <tr>
+                                        <th scope="row">
+                                            <%= i %>
+                                        </th>
+                                        <td scope="col">
+                                            <%= aprendiz.documento %>
+                                        </td>
+                                        <td scope="col">
+                                            <%= aprendiz.nombre%>
+                                        </td>
+                                        <td scope="col">
+                                            <%= aprendiz.notaJs %>
+                                        </td>
+                                        <td scope="col">
+                                            <%= aprendiz.notaPhp %>
+                                        </td>
+                                        <td scope="col">
+                                            <%= aprendiz.notaIngles %>
+                                        </td>
+                                        <td>
+                                            <a href="/aprendiz/<%= aprendiz.documento  %>" class="btn btn-warning">
+                                                editar</a>
+                                        </td>
+                                    </tr>
+                                    <% i+=1 %>
+                                        <% }) %>
+                                            <% } %>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
 
