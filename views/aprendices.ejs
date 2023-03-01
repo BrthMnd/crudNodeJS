@@ -43,8 +43,11 @@
                                             <%= aprendiz.notaIngles %>
                                         </td>
                                         <td>
-                                            <a href="/aprendiz/<%= aprendiz.documento  %>" class="btn btn-warning">
-                                                editar</a>
+                                            <a href="/aprendices/<%= aprendiz.id  %>" class="btn btn-warning">
+                                                Editar</a>
+                                            <button type="button" data-id="<%= aprendiz.id  %>" href=""
+                                                class="btn btn-danger" id="btn__eliminar">
+                                                Borrar</button>
                                         </td>
                                     </tr>
                                     <% i+=1 %>
