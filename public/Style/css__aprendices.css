@@ -1,5 +1,5 @@
 #container{
-    width: 800px;
+    width: 900px;
     height: 800px;
     margin-top: 50px;
     display: grid;
@@ -9,7 +9,7 @@
 
 }
 #table__style{
-    width: 800px;
+    width: 900px;
     height: 400px;
     overflow: scroll;
 }

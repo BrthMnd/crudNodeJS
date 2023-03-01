@@ -5,21 +5,18 @@ const bodyParser = require('body-parser')
 const app = express();
 const mongoose = require('mongoose');
 const port = process.env.PORT || 3000;
-const TextEncoder = require('text-encoding').TextEncoder;
 //////////////////////////////// body parse Configuration //////////////////////////////////
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 //////////////////////////////// Mongoose //////////////////////////////////
 
-const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.nsvkq9w.mongodb.net/${process.env.DB}?retryWrites=true&w=majority`
+const uri = `mongodb+srv://${process.env.USER_ADMIN}:${process.env.PASSWORD}@cluster0.nsvkq9w.mongodb.net/${process.env.DB}?retryWrites=true&w=majority`
 
 
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    // strictQuery: false
-    // useCreateIndex: true,
 }).then(()=> console.log('Base de datos conectada')).catch(err => console.error(err));
 
 //////////////////////////////// EJS //////////////////////////////////

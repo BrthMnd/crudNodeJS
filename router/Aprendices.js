@@ -32,16 +32,21 @@ router.post('/', async (req, res, next) =>{
     }
 })
 
-router.get('/:documento', async (req, res, next) =>{
-    const documento =req.params.documento
-    console.log("el documento es: "+documento)   
+router.get('/:id', async (req, res, next) =>{
+
+    const identi = req.params.id
+    console.log("el documento es: ", identi)   
+
 
     try {
-        const aprendizEdit = await Aprendices.findOne({documento: documento});
+        const aprendizEdit = await Aprendices.findOne({ _id : identi });
         console.log(aprendizEdit)
+        if (!aprendizEdit) {
+            throw new Error('El aprendiz no se encontró en la base de datos');
+          }
         res.render('detalle',{
             aprendiz : aprendizEdit,
-            error: false
+            error: false,
         })
     } catch (error) {
         console.error(error)
@@ -51,5 +56,27 @@ router.get('/:documento', async (req, res, next) =>{
         })
     }
 })
+router.delete( '/:id' , async (req, res, next) =>
+{
+    const identi = req.params.identi
+    console.log("el documento es: ", identi)
+
+    try {
+        const mascotaDelete = await Aprendices.findByIdAndDelete({ _id : identi });
+        if (mascotaDelete) {
+            res.json({ estado: true, message: "eliminado" })
+        }else{
+            
+            res.json({ estado: false, message: "no elminado" })
+
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
+
+
+ }
+)
 
 module.exports = router

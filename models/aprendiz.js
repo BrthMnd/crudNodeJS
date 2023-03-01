@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const AprendizSchema = new Schema({
+    // _id: String,
     documento: String,
     nombre: String,
     notaJs: Number,
