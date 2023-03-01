@@ -12,3 +12,5 @@ const AprendizSchema = new Schema({
 const Aprendiz = mongoose.model('Aprendices', AprendizSchema);
 
 module.exports = Aprendiz;
+
+// Falta la conexion a la base de datos
