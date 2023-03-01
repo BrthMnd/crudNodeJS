@@ -14,8 +14,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon /app.js",
-    "build": "ejs-cli --base-dir views/ '**/*.ejs' --out public/"
+    "start": "node app",
+    "build": "ejs-cli --base-dir views/ '*.ejs' --out public/"
   },
   "author": "brandon",
   "license": "ISC",

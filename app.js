@@ -17,8 +17,6 @@ const uri = `mongodb+srv://${process.env.USER_ADMIN}:${process.env.PASSWORD}@clu
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    // strictQuery: false
-    // useCreateIndex: true,
 }).then(()=> console.log('Base de datos conectada')).catch(err => console.error(err));
 
 //////////////////////////////// EJS //////////////////////////////////
