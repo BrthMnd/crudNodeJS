@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('../data/conexion.js');
+const Schema = require('mongoose').Schema;
 
 const AprendizSchema = new Schema({
     // _id: String,
