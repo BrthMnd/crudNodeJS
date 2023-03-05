@@ -10,7 +10,7 @@
                 <% } %>
                     <% if (!false) { %>
 
-                        <form method="POST" action="/aprendices/editar/<%= aprendiz.id %>">
+                        <form method="POST" action="/aprendices/borrar/<%= aprendiz.id %>?_method=DELETE">
                             <div class="form-floating mb-3">
                                 <input name="documento" type="text" class="form-control" id="floatingInput"
                                     placeholder="name@example.com" value="<%= aprendiz.documento %>">
@@ -30,7 +30,7 @@
                             </div>
                             <div class="form-floating mb-3">
                                 <input name="notaPhp" type="text" class="form-control" id="floatingPassword"
-                                    placeholder="Password" value="<%= aprendiz.notaPhp %>">
+                                    placeholder="Password" value="<%= aprendiz.notasPhp %>">
                                 <label for="floatingPassword">notaPhp:</label>
                             </div>
                             <div class="form-floating mb-3">
@@ -41,7 +41,8 @@
                             <div class="btn__send">
 
                                 <a href="/aprendices" class="btn btn-dark">Volver</a>
-                                <button type="submit" class="btn btn-success">Editar</button>
+                                <button type="submit" class="btn btn-success">Borrar</button>
+
                             </div>
                         </form>
                         <% } %>

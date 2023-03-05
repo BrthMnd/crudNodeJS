@@ -12,3 +12,5 @@ const conexion = mongoose.createConnection(
 })
 
 module.exports = conexion
+
+//primero descargar librerias externas 

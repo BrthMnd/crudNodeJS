@@ -45,9 +45,9 @@
                                         <td>
                                             <a href="/aprendices/<%= aprendiz.id  %>" class="btn btn-warning">
                                                 Editar</a>
-                                            <button type="button" data-id="<%= aprendiz.id  %>" href=""
-                                                class="btn btn-danger" id="btn__eliminar">
-                                                Borrar</button>
+
+                                            <button href="" onclick="VerificarConAlert('<%= aprendiz.id  %>')"
+                                                class="btn btn-danger" id="btn__eliminar"> Borrar</button>
                                         </td>
                                     </tr>
                                     <% i+=1 %>
@@ -60,5 +60,41 @@
         </div>
 
     </section>
+    <script>
+        const VerificarConAlert = (aprend) => {
+            console.log(aprend)
+
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = 'aprendices/borrar/' + aprend
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Cancelled',
+                        'Your imaginary file is safe :)',
+                        'error'
+                    )
+                }
+            })
+        }
+    </script>
 
     <%- include("templates/footer") %>

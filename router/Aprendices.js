@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+
 const Aprendices = require('../models/aprendiz')
 router.get('/', async (req, res, next) => {
     try {
@@ -40,7 +41,7 @@ router.get('/:id', async (req, res, next) =>{
 
     try {
         const aprendizEdit = await Aprendices.findOne({ _id : identi });
-        console.log(aprendizEdit)
+        
         if (!aprendizEdit) {
             throw new Error('El aprendiz no se encontró en la base de datos');
           }
@@ -56,27 +57,60 @@ router.get('/:id', async (req, res, next) =>{
         })
     }
 })
-router.delete( '/:id' , async (req, res, next) =>
-{
-    const identi = req.params.identi
-    console.log("el documento es: ", identi)
-
+router.post('/editar/:id', async (req, res, next) =>{
+    const identi = req.params.id
+    const body = {
+        documento: req.body.documento,
+        nombre: req.body.nombre,
+        notaJs: req.body.notaJs,
+        notaPhp: req.body.notaPhp,
+        notaIngles: req.body.notaIngles
+    }
     try {
-        const mascotaDelete = await Aprendices.findByIdAndDelete({ _id : identi });
-        if (mascotaDelete) {
-            res.json({ estado: true, message: "eliminado" })
-        }else{
-            
-            res.json({ estado: false, message: "no elminado" })
+        
+        await Aprendices.updateOne({ _id : identi }, body )
+        res.redirect('/aprendices/')
 
-        }
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 
+    console.log("Body es:", body)
+})
+router.get('/borrar/:id', async (req, res, next) =>{
+
+    const identi = req.params.id
+    console.log("el documento eliminado es: ", identi)   
 
 
- }
-)
+    try {
+        
+          await Aprendices.deleteOne({ _id : identi });
+        res.redirect('/aprendices')
+    } catch (error) {
+        console.error(error)
+    }
+})
+// router.delete( '/:id' , async (req, res, next) =>
+// {
+//     const identi = req.params.identi
+//     console.log("el documento es: ", identi)
+
+//     try {
+//         const mascotaDelete = await Aprendices.findByIdAndDelete({ _id : identi });
+//         if (mascotaDelete) {
+
+//             res.json({ estado: true, message: "eliminado" })
+            
+//         }else{
+            
+//             res.json({ estado: false, message: "no elminado" })
+
+//         }
+//     } catch (error) {
+//         console.log(error)
+//     }
+//  }
+// )
 
 module.exports = router
